@@ -20,7 +20,7 @@ export const ArticleThumbnail: React.FC<ArticleThumbnailProps> = ({
   };
 
   useEffect(() => {
-    const usuarioAtual = Number(localStorage.getItem("usuarioId"));
+    const usuarioAtual = Number(localStorage.getItem("id"));
     setEditavel(autor.id === usuarioAtual);
   }, [autor]);
 
