@@ -1,4 +1,4 @@
-import axios from 'axios';
+import apiClient from '../../services/api-client';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArticleForm } from '../../components/ArticleForm';
@@ -18,43 +18,25 @@ export const EditarArquivoPage = () => {
   };
 
   async function alteraArtigo(artigo: ArticleThumbnailProps) {
-    const token = localStorage.getItem('access_token');
-    const url = `http://3.221.159.196:3307/artigos/${artigo.id}`;
-    const response = await axios.patch(
-      url,
-      {
-        titulo: artigo.titulo,
-        imagem: artigo.imagem,
-        resumo: artigo.resumo,
-        conteudo: artigo.conteudo,
-      },
-      {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      }
-    );
+    const url = `/artigos/${id}`;
+    const response = await apiClient.patch(url, {
+      titulo: artigo.titulo,
+      imagem: artigo.imagem,
+      resumo: artigo.resumo,
+      conteudo: artigo.conteudo,
+    });
     navigate('/artigos');
     return response;
   }
 
   async function novoArtigo(artigo: ArticleThumbnailProps) {
-    const token = localStorage.getItem('access_token');
-    const url = `http://3.221.159.196:3307/artigos/`;
-    const response = await axios.post(
-      url,
-      {
-        titulo: artigo.titulo,
-        imagem: artigo.imagem,
-        resumo: artigo.resumo,
-        conteudo: artigo.conteudo,
-      },
-      {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      }
-    );
+    const url = `/artigos`;
+    const response = await apiClient.post(url, {
+      titulo: artigo.titulo,
+      imagem: artigo.imagem,
+      resumo: artigo.resumo,
+      conteudo: artigo.conteudo,
+    });
     navigate('/artigos');
     return response;
   }
@@ -66,14 +48,8 @@ export const EditarArquivoPage = () => {
   }, [id]);
 
   async function buscaArtigo() {
-    const token = localStorage.getItem('access_token');
-    const response = await axios.get<ArticleThumbnailProps>(
-      `http://3.221.159.196:3307/artigos/${id}`,
-      {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      }
+    const response = await apiClient.get<ArticleThumbnailProps>(
+      `/artigos/${id}`
     );
     setArtigo(response.data);
   }
