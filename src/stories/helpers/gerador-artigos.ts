@@ -13,5 +13,6 @@ export const geraArtigos = (quantidade: number): ArticleThumbnailProps[] => {
       avatar: faker.image.avatar(),
     },
     id: index,
+    conteudo: faker.lorem.paragraph(),
   }));
 };
