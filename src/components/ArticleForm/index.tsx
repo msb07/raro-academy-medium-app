@@ -99,12 +99,10 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
           />
 
           <div className='flex space-x-16'>
-            <Button type='submit'>Salvar</Button>
-            <Button
-              type='button'
-              color='border-b-red-600 bg-red-500 hover:bg-red-400 active:border-b-red-400'
-              onClick={onClick}
-            >
+            <Button color='blue' type='submit'>
+              Salvar
+            </Button>
+            <Button type='button' color='red' onClick={onClick}>
               Deletar
             </Button>
           </div>
