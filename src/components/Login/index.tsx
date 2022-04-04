@@ -79,7 +79,7 @@ export const Login = () => {
             <></>
           )}
           <div>
-            <Button type='submit' disabled={loading}>
+            <Button color='blue' type='submit' disabled={loading}>
               {loading ? 'Carregando' : 'Entrar'}
             </Button>
           </div>
