@@ -25,7 +25,7 @@ export const EditarArquivoPage = () => {
       resumo: artigo.resumo,
       conteudo: artigo.conteudo,
     });
-    navigate('/artigos');
+    navigate(`/artigo/${response.data.id}`);
     return response;
   }
 

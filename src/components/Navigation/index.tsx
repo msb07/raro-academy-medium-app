@@ -30,7 +30,6 @@ export const Navigation = () => {
       <ActivableLink to='/'>Home</ActivableLink>
       <ActivableLink to='/artigos'>Meus Artigos</ActivableLink>
       <ActivableLink to='/artigos/novo'>Novo Artigo</ActivableLink>
-      <ActivableLink to='/login'>Login</ActivableLink>
       <ActivableLink to='/' onClick={logout} type={'button'}>
         Logout
       </ActivableLink>

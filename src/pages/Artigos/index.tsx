@@ -2,6 +2,7 @@ import apiClient from '../../services/api-client';
 import { useEffect, useState } from 'react';
 import { ArticleList } from '../../components/ArticleList';
 import { ArticleThumbnailProps } from '../../components/ArticleThumbnail/ArticleThumbnail.types';
+import { NoArticles } from '../../components/NoArticles';
 
 export const ArtigosPage = () => {
   const [articles, setArticles] = useState<ArticleThumbnailProps[]>([]);
@@ -14,6 +15,10 @@ export const ArtigosPage = () => {
   useEffect(() => {
     buscaArtigos();
   }, []);
+
+  if (articles.length === 0) {
+    return <NoArticles />;
+  }
 
   return (
     <div className='my-30'>
