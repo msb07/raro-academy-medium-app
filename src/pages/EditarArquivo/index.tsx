@@ -37,6 +37,13 @@ export const EditarArquivoPage = () => {
       resumo: artigo.resumo,
       conteudo: artigo.conteudo,
     });
+    navigate(`/artigo/${response.data.id}`);
+    return response;
+  }
+
+  async function deletaArtigo() {
+    const url = `/artigos/${id}`;
+    const response = await apiClient.delete(url);
     navigate('/artigos');
     return response;
   }
@@ -57,7 +64,11 @@ export const EditarArquivoPage = () => {
   return (
     <>
       <div className='items-center justify-center m-10'>
-        <ArticleForm article={artigo} onSubmit={handleSubmit} />
+        <ArticleForm
+          article={artigo}
+          onSubmit={handleSubmit}
+          onClick={deletaArtigo}
+        />
       </div>
     </>
   );
